@@ -1,5 +1,15 @@
 clear
 clearglobal
+///////////////////////////////////////////////////////
+//  Montante.sce
+//
+//  Este programa es la parte gráfica para poder
+//  encontrar la solución de una ecuación lineal
+//
+//   Ricardo   Gonzalez
+//   Javier    Santisteban
+//   11 / ABR / 19    version 1.0
+//////////////////////////////////////////////////////
 
 // Declaro las variables que se necesitaran para la interface
 sParams = [" " "" "" ];
@@ -60,6 +70,18 @@ endfunction
 // Callbacks are defined as below. Please do not delete the comments as it will be used in coming version
 //////////
 
+//////////////////////////////////////////////////////
+//  Calcula_callback
+//
+//  Función que trae la información de los componentes
+//  gráficos y posteriormente realiza montante para
+//  poder mostrarselo al usuario
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Calcula_callback(handles)
   global iMatSize
   sMatriz = matrix(handles.Matriz.String, iMatSize)
@@ -72,7 +94,16 @@ function Calcula_callback(handles)
   handles.Respuesta.String = sX
 endfunction
 
-
+//////////////////////////////////////////////////////
+//  Incrementa_Renglon
+//
+//  Funcion agrega un renglón al final de la matriz
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Incrementa_Renglon(handles)
   global iMatSize
   sMatriz = matrix(handles.Matriz.String, iMatSize)
@@ -83,6 +114,16 @@ function Incrementa_Renglon(handles)
   iMatSize(1) = iMatSize(1) + 1
 endfunction
 
+//////////////////////////////////////////////////////
+//  Incrementa_Columna
+//
+//  Funcion agrega una columna al final de la matriz
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Incrementa_Columna(handles)
   global iMatSize
   sMatriz = matrix(handles.Matriz.String, iMatSize)
@@ -93,6 +134,16 @@ function Incrementa_Columna(handles)
   iMatSize(2) = iMatSize(2) + 1
 endfunction
 
+//////////////////////////////////////////////////////
+//  Borra_Renglon
+//
+//  Funcion borra un renglón al final de la matriz
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Borra_Renglon(handles)
   global iMatSize
   sMatriz = matrix(handles.Matriz.String, iMatSize)
@@ -101,6 +152,16 @@ function Borra_Renglon(handles)
   iMatSize(1) = iMatSize(1) - 1
 endfunction
 
+//////////////////////////////////////////////////////
+//  Borra_Columna
+//
+//  Funcion borra una columna al final de la matriz
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Borra_Columna(handles)
   global iMatSize
   sMatriz = matrix(handles.Matriz.String, iMatSize)

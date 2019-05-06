@@ -1,5 +1,15 @@
 clear
 clearglobal
+///////////////////////////////////////////////////////
+//  NewtonInterpolacion.sce
+//
+//  Este programa es la parte gráfica para poder
+//  encontrar la integración de una función
+//
+//   Ricardo   Gonzalez
+//   Javier    Santisteban
+//   11 / ABR / 19    version 1.0
+//////////////////////////////////////////////////////
 
 // Declaro las variables que se necesitaran para la interface
 sParams = [" " "X" "Y" ];
@@ -36,6 +46,7 @@ iYSize = [3 3]
 //  el cual se puede evaluar la funcion en cualquier
 //  punto dado
 //
+//   Referencias: https://stackoverflow.com/questions/14823891/newton-s-interpolating-polynomial-python
 //   Parametros:
 //      dX     son los valores que se encuentran en X
 //      dY     son los valores que se encuentran en Y
@@ -66,6 +77,7 @@ endfunction
 //  coeficientes obtenidos de dichos puntos, Se calcula
 //  el valor en algun punto en x.
 //
+//   Referencias: https://stackoverflow.com/questions/14823891/newton-s-interpolating-polynomial-python
 //   Parametros:
 //     dCoff        vector de coeficientes
 //     dX           puntos en x de la funcion
@@ -86,6 +98,18 @@ endfunction
 // Callbacks are defined as below. Please do not delete the comments as it will be used in coming version
 //////////
 
+//////////////////////////////////////////////////////
+//  Calcula_callback
+//
+//  Función que trae la información de los componentes
+//  gráficos y posteriormente calcula la interpolacion
+//  para poder mostrarselo al usuario
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Calcula_callback(handles)
   global iXSize
   sMatriz = matrix(handles.Matrix_X_Y.String, iXSize)
@@ -100,6 +124,17 @@ function Calcula_callback(handles)
   handles.Resultado.String = sRespuesta
 endfunction
 
+//////////////////////////////////////////////////////
+//  Incrementa_Renglon_X
+//
+//  Funcion que permite aumentar el numero de
+//  renglones para poder agregar otro dato
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Incrementa_Renglon_X(handles)
   global iXSize
   sMatriz = matrix(handles.Matrix_X_Y.String, iXSize)
@@ -110,6 +145,17 @@ function Incrementa_Renglon_X(handles)
   iXSize(1) = iXSize(1) + 1
 endfunction
 
+//////////////////////////////////////////////////////
+//  Borra_Renglon_X
+//
+//  Funcion que permite disminuir el numero de
+//  renglones para poder agregar otro dato
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Borra_Renglon_X(handles)
   global iXSize
   if iXSize(1) == 2 then return; end

@@ -1,5 +1,16 @@
 clear
 clearglobal
+///////////////////////////////////////////////////////
+//  Mejor_Regresion.sce
+//
+//  Este programa es la parte gráfica para poder
+//  encontrar la mejor regresión de una lista de puntos
+//  x/y
+//
+//   Ricardo   Gonzalez
+//   Javier    Santisteban
+//   11 / ABR / 19    version 1.0
+//////////////////////////////////////////////////////
 
 // Declaro las variables que se necesitaran para la interface
 sParams = [" " "X" "Y" ];
@@ -349,6 +360,18 @@ endfunction
 // Callbacks are defined as below. Please do not delete the comments as it will be used in coming version
 //////////
 
+//////////////////////////////////////////////////////
+//  Calcula_callback
+//
+//  Función que trae la información de los componentes
+//  gráficos y posteriormente calcula la mejor regresion
+//  para poder mostrarselo al usuario
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Calcula_callback(handles)
   global iXSize
   sMatriz = matrix(handles.Matrix_X_Y.String, iXSize)
@@ -361,6 +384,17 @@ function Calcula_callback(handles)
   handles.Resultado.String = sRespuesta
 endfunction
 
+//////////////////////////////////////////////////////
+//  Incrementa_Renglon_X
+//
+//  Funcion que permite aumentar el numero de
+//  renglones para poder agregar otro dato
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Incrementa_Renglon_X(handles)
   global iXSize
   sMatriz = matrix(handles.Matrix_X_Y.String, iXSize)
@@ -371,6 +405,17 @@ function Incrementa_Renglon_X(handles)
   iXSize(1) = iXSize(1) + 1
 endfunction
 
+//////////////////////////////////////////////////////
+//  Borra_Renglon_X
+//
+//  Funcion que permite disminuir el numero de
+//  renglones para poder agregar otro dato
+//
+//   Parametros:
+//      handles   Es el objeto que sirve para
+//                controlar toda la parte gráfica del
+//                programa
+/////////////////////////////////////////////////////
 function Borra_Renglon_X(handles)
   global iXSize
   if iXSize(1) == 2 then return; end
